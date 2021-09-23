@@ -7,7 +7,7 @@ from nltk.stem import PorterStemmer
 
 stop_words = set(stopwords.words('english'))
 
-def clean(text, exclude_nums=True, lematize = False):
+def clean(text, exclude_nums=True, lemmatize = False):
 
 	#lowercase text
 	text = text.lower()
@@ -25,8 +25,8 @@ def clean(text, exclude_nums=True, lematize = False):
 	#stem text
 	stemmed_words = stem_words(no_stopwords)
 
-	#lematize text
-	if lematize:
+	#lemmatize text
+	if lemmatize:
 		stemmed_words = False
 		lemmatized_words = lemmatize_words(no_stopwords)
 	
@@ -74,7 +74,7 @@ def stem_words(text):
 
 
 
-#lematize words
+#lemmatize words
 def lemmatize_words(text):
 	nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner']) # just keep tagger for lemmatization
 	lemmatized_words = []
