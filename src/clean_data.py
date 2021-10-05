@@ -30,9 +30,6 @@ def normalize_text(text, exclude_nums=True, lemmatize = False):
 	
 	Returns:
 		The normalized text as a list of tokens.
-	
-	Raises:
-		AttributeError if the text passed is not a string. 
     """
     #lowercase text
     text = lowercase(text)
@@ -118,9 +115,6 @@ def tokenize_remove_stopwords(text):
 
     Returns:
         Text with stopwords removed
-    
-    Raises: 
-        AttributeError: If text is not a string.
     """
     no_stopwords = []
     stop_words = stopwords.words('english')
