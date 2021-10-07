@@ -1,0 +1,65 @@
+<style>
+
+#top{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+h1 {
+       color:white;
+       display:fill;
+       border-radius:5px;
+       background-color:#3885ff;
+       font-size:220%;
+       font-family:Nexa;
+       letter-spacing:0.5px
+       font-size: 1.25em;
+       padding: 20px;
+       text-align:left
+}
+
+h3 {
+        color: black;
+}
+
+#subtitle {
+    color:#49d1af;
+}
+
+.description {
+    font-family:Nexa;
+    border-style:solid;
+    border-color:gray;
+    border-width:8px;
+    border-radius:20px;
+    padding: 20px;
+    text-align:left;
+    font-size: 18px;
+}
+
+.analysis {
+    font-family:Nexa;
+    border-style:solid;
+    border-color:#3299a8;
+    border-width:8px;
+    border-radius:20px;
+    padding: 20px;
+    text-align:left;
+    font-size: 18px; 
+}
+
+hr {
+    overflow: visible; /* For IE */
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+    height: 2px;
+}
+
+.section_num {
+    color: #49d1af;
+}
+
+</style>
