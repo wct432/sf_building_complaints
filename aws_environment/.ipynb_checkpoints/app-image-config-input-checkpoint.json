@@ -1,0 +1,16 @@
+{
+    "AppImageConfigName": "sf_building_complaints_config",
+    "KernelGatewayImageConfig": {
+        "KernelSpecs": [
+            {
+                "Name": "sf_building_complaints",
+                "DisplayName": "Python [conda env: sf_building_complaints]"
+            }
+        ],
+        "FileSystemConfig": {
+            "MountPath": "/root",
+            "DefaultUid": 0,
+            "DefaultGid": 0
+        }
+    }
+}

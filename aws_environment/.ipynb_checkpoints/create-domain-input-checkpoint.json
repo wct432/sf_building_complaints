@@ -1,0 +1,20 @@
+{
+    "DomainName": "sf_building_complaints",
+    "VpcId": "vpc-0df8e43d95c9516dd",
+    "SubnetIds": [
+        "subnet-04686777b25ce42bc",
+        "subnet-09731a5423fcdb486"
+    ],
+    "DefaultUserSettings": {
+        "ExecutionRole": "arn:aws:iam::784197136030:role/service-role/AmazonSageMaker-ExecutionRole-20211007T112051",
+        "KernelGatewayAppSettings": {
+            "CustomImages": [
+                {
+                    "ImageName": "sf_building_complaints",
+                    "AppImageConfigName": "sf_building_complaints_config"
+                }
+            ]
+        }
+    },
+    "AuthMode": "IAM"
+}
