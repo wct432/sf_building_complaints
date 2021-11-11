@@ -1,5 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c4c1b1a785b464d9cea62cd1c79320c2efbb462f8fd4ebc6f474595bbc8a7dd4
-size 57
-/.ipynb_checkpoints
 .DS_Store
+/.ipynb_checkpoints
+.csv
+.h5
+.npy
