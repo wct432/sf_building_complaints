@@ -65,7 +65,7 @@ df = pd.read_csv(data_path + 'raw_data.csv', usecols=['complaint_description', '
 Now we are ready to explore our data, we want to get a feel for the dataframe and for the distribution of our data amongst the  
 different classes.  
 
-##### 1. View Head of Data
+#### 1. View Head of Data
 ``` python
 df.head()
 ```
@@ -85,13 +85,13 @@ df.head()
 </p>
 </details>
 
-##### 2. View Shape of Data
+#### 2. View Shape of Data
 ``` python
 df.shape
 ```
 *(268628, 2)*
 
-##### 3. Find and Drop Duplicates
+#### 3. Find and Drop Duplicates
 View Number of Duplicates:
 ``` python
 #determine how many duplicate entries there are
