@@ -7,6 +7,7 @@
       - [3. Find and Drop Duplicates](#3-find-and-drop-duplicates)
       - [4. Check Data Types](#4-check-data-types)
       - [5. Check Class Imbalance](#5-check-class-imbalance)
+      - [6. Selection Classes for our Model](#6-selection-classes-for-our-model)
 # 1. Introduction
 The goal of this project is to build a Natural Language Processing multi-class Classifier using Tensorflow, Keras, Hugging Face,   
 and other libraries that the City of San Francisco could use to classify complaints received by the building department so the   
@@ -143,3 +144,21 @@ Central Permit Bureau                 1
 Major Plan Check Division             1  
 Department of Public Health           1  
 Name: assigned_division, dtype: int64*
+
+Clearly we are dealing with an imbalanced data set, with virtually half of the complaints belonging to Housing Inspection Services.   
+We will explore different techniques later on to deal with this imbalance, through experimentation I found the best results by using   
+class weights in Tensorflow and utilizing transfer learning by using a BERT encoder as the first layer in our final model.  
+
+This gave the model a much deeper understanding of the text, which was especially helpful for classes with less data,   
+like the Disabled Access Division.
+
+#### 6. Selection Classes for our Model
+The Code Enforcment Division doesn't contain complaints the city received, it is  a log of inspections and infractions so we will drop it from  
+the database. We are also going to remove any categories that don't have at least 1,000 complaints, as there are many categories with virtually  
+no data. 
+
+Removing Classes from Dataframe:
+``` python
+df = df.groupby("assigned_division").filter(lambda x: len(x) > 1000) #drop any divisions with less than 1000 complaints
+df = df.loc[df['assigned_division'] != 'Code Enforcement Section']   #remove Code Enforcement Section
+```
