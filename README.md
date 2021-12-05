@@ -1,5 +1,6 @@
 - [1. Introduction](#1-introduction)
-- [2. Exploration and Visualizations](#2-exploration-and-visualizations)
+- [2. Exploratory Analysis and Visualizations](#2-exploratory-analysis-and-visualizations)
+  - [1. Exploration](#1-exploration)
     - [1. Fetch and Load Data](#1-fetch-and-load-data)
     - [2. Explore Data](#2-explore-data)
       - [1. View Head of Data](#1-view-head-of-data)
@@ -8,6 +9,9 @@
       - [4. Check Data Types](#4-check-data-types)
       - [5. Check Class Imbalance](#5-check-class-imbalance)
       - [6. Select Classes for our Model](#6-select-classes-for-our-model)
+      - [7. Dealing with Null Values](#7-dealing-with-null-values)
+      - [8. Analyze Complaint Length](#8-analyze-complaint-length)
+  - [2. Visualizations](#2-visualizations)
 # 1. Introduction
 The goal of this project is to build a Natural Language Processing multi-class Classifier using Tensorflow, Keras, Hugging Face,   
 and other libraries that the City of San Francisco could use to classify complaints received by the building department so the   
@@ -30,10 +34,12 @@ Currently the project is utilizing following libraries:
     <li>Scikit-Learn</li>
 <ul>
 
-# 2. Exploration and Visualizations
+# 2. Exploratory Analysis and Visualizations
 We will begin by exploring the dataset we will be working with to get an idea of the number of complaints for each department,  
 how many null values and duplicates there are, what words are most frequent throughout the dataset and different deaparments,  
 and other information about the corpus, or body of text we will be working with. 
+
+## 1. Exploration
 
 ### 1. Fetch and Load Data
 To begin we fetch our data using the fetch_data module in src, this simply fetches the data from the City of SF's API using our  
@@ -156,8 +162,57 @@ like the Disabled Access Division.
 The Code Enforcment Division doesn't contain complaints the city received, it is  a log of inspections and infractions so we will    
 drop it from the database. We are also going to remove any categories that don't have at least 1,000 complaints, as there are many categories with virtually no data. 
 
-Removing Classes from Dataframe:
+Removing Unwanted Classes from Dataframe:
 ``` python
 df = df.groupby("assigned_division").filter(lambda x: len(x) > 1000) #drop any divisions with less than 1000 complaints
 df = df.loc[df['assigned_division'] != 'Code Enforcement Section']   #remove Code Enforcement Section
 ```
+
+Ensure Classes are Correct after Removal:
+``` python
+#ensure the dataframe is as expected after dropping columns
+df.assigned_division.value_counts()
+```
+*Housing Inspection Services       87118  
+Building Inspection Division      63685  
+Plumbing Inspection Division      16297  
+Electrical Inspection Division     5544  
+Disabled Access Division           1114  
+Name: assigned_division, dtype: int64*  
+
+#### 7. Dealing with Null Values
+Checking for Null Values: 
+``` python
+#check for null values
+df.isna().sum()
+```
+*complaint_description    4
+assigned_division        0
+dtype: int64*
+
+With only 4 null values in the complaint_description we will simply drop them from the dataframe:
+``` python
+#drop rows that contain null values
+df.dropna(inplace = True)
+```
+
+#### 8. Analyze Complaint Length
+Now we will explore the length of our complaints, we want to find the minimum, maximum, and average complaint length,  
+as well as view the distribution of the length of complaints. 
+
+Finding Complaint Length Statistics:
+``` python
+sample = df.copy()                                                          #copy dataframe
+sample['complaint_length'] = sample['complaint_description'].apply(len)     #calculate length of each complaint
+print("COMPLAINT LENGTH STATISTICS:")
+print("Mean Complaint Length: ", sample['complaint_length'].mean())         #print mean complaint length
+print("Min Complaint Length: ", sample['complaint_length'].min())           #print minimum complaint length
+print("Max Complaint Length: ", sample['complaint_length'].max())           #print maximum complaint length
+
+```
+*COMPLAINT LENGTH STATISTICS:  
+Mean Complaint Length:  150.45421688133797  
+Min Complaint Length:  1  
+Max Complaint Length:  1000*   
+
+## 2. Visualizations
