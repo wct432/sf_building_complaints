@@ -279,7 +279,7 @@ wordcloud = WordCloud(stopwords=stop_words, background_color="aliceblue",       
 
 fig, ax = plt.subplots(figsize=(24,10))                                             #set figure size
 ax = plt.imshow(wordcloud, interpolation='bilinear')                                #display wordcloud
-plt.axis("off")                                                                     #remove axis                                                                #remove axis
+plt.axis("off")                                                                     #remove axis                                                  
 ```
 
 </p>
