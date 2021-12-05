@@ -154,8 +154,7 @@ like the Disabled Access Division.
 
 #### 6. Select Classes for our Model
 The Code Enforcment Division doesn't contain complaints the city received, it is  a log of inspections and infractions so we will    
-drop it from the database. We are also going to remove any categories that don't have at least 1,000 complaints, as there are many       
-categories with virtually no data. 
+drop it from the database. We are also going to remove any categories that don't have at least 1,000 complaints, as there are many categories with virtually no data. 
 
 Removing Classes from Dataframe:
 ``` python
