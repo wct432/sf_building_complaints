@@ -1,12 +1,24 @@
-# sf_building_complaints
-Natural Language Processing project that classifies complaints received by the San Francisco Department of Building Inspection into the division that needs to address the compliant, such as the Electrical Services Division. The project uses Spacy and the Natural Language Toolkit to preprocess the text using functions defined in clean_data.py. Lemmatized and stemmed versions of the corpus are created and saved in the /data subdirectory. The tokenized text is then fed to a variety of Tensorflow models to compare performance, including Sequential, LSTM, and BERT models. 
+- [1. Introduction](#1-introduction)
+# 1. Introduction
+The goal of this project is to build a classifier that the City of San Francisco could  
+use to classify complaints received by the building department so that the complaints  
+could be forwarded to the proper division, such as the Electrical Services Divison  
+or the Building Inspection Division.  
 
+I found the dataset on https://datasf.org/ which is a collection of public datasets  
+the City of San Francisco has made available. The dataset consists of 184,593 different  
+complaints the Building Department has received and include other information about the complaint,   
+including the division it was assigned to which will be the target for our model.
 
-Currently this repo is making use of the following frameworks and technologies:
-<br>
+The dataset is continously updated as the department receives more complaints and can   
+easily be downloaded using the city's Socrata API. 
+
+Currently the project is utilizing following libraries:  
 <ul>
-<li>Tensorflow</li>
-<li>Hugging Face</li>
-<li>NLTK</li>
-<li>SpaCy</li>
-<li>Scikit-Learn</li>
+    <li>Tensorflow</li>
+    <li>Keras</li>
+    <li>Hugging Face</li>
+    <li>NLTK</li>
+    <li>SpaCy</li>
+    <li>Scikit-Learn</li>
+<ul>
