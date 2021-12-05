@@ -66,6 +66,11 @@ View Head of Data:
 ``` python
 df.head()
 ```
+<details>
+<summary> Click to display dataframe head! </summary>
+
+<p>
+
 |    | complaint_description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | assigned_division            |
 |---:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------|
 |  0 | Caller reporting that the water is discolored. orange color in the sink, water heater(stains) drizzles down the walls;  the exterior windows were painted, the people that were painting wore mask, caller states they were not informed of the particles that were coming in the window. the building was tested for asbestos and the finding were not disclosed to the tenants. caller states the management is doing there own testing, caller states there was a gas leak and they were not given the reason why pgand e was turned off. if elevator is out for a few weeks it makes it hard on the elders in the building to get out. | Housing Inspection Services  |
@@ -73,6 +78,10 @@ df.head()
 |  2 | Date last observed: 08-dec-17;    exact location: main bldg;    building type: residence/dwelling   illegal unit; ;    additional information: anonymous complaint of illegal units in building;                                                                                                                                                                                                                                                                                                                                                                                                                                           | Housing Inspection Services  |
 |  3 | Date last observed: 19-aug-17;    time last observed: shapiro;    exact location: main bldg;    building type: commercial/business   work beyond scope of permit; ;    additional information: again i'm awakened by the sounds of heavy equipment rolling into this site.  4:50am on a saturday.  yesterday was 4:30am.  this can not be legal.;                                                                                                                                                                                                                                                                                          | Building Inspection Division |
 |  4 | Date last observed: 14-aug-17;    time last observed: 8 am;    floor: n/a;    unit: n/a;    exact location: main bldg;    building type: residence/dwelling   other building; ;    additional information: contractor is occupying street and storing equipment and dumpsters along entire street front of project and no valid street use permit is displayed - only an expired one;                                                                                                                                                                                                                                                      | Building Inspection Division |
+
+</p>
+</details>
+
 
 View Shape of Dataframe:
 ``` python
