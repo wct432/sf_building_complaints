@@ -8,7 +8,7 @@ and other libraries that the City of San Francisco could use to classify complai
 complaints could be forwarded to the proper division, such as the Electrical Services Divison or the Building Inspection Division.  
 
 I found the dataset on https://datasf.org/ which is a collection of public datasets the City of San Francisco has made available.   
-The dataset consists of 184,593 different complaints that the Building Department has received and include other information   
+The dataset consists of 268,628 different complaints that the Building Department has received and include other information   
 about the complaint, including the division it was assigned to which will be the target for our model.
 
 The dataset is continously updated as the department receives more complaints and can easily be downloaded using the city's Socrata  
@@ -73,3 +73,9 @@ df.head()
 |  2 | Date last observed: 08-dec-17;    exact location: main bldg;    building type: residence/dwelling   illegal unit; ;    additional information: anonymous complaint of illegal units in building;                                                                                                                                                                                                                                                                                                                                                                                                                                           | Housing Inspection Services  |
 |  3 | Date last observed: 19-aug-17;    time last observed: shapiro;    exact location: main bldg;    building type: commercial/business   work beyond scope of permit; ;    additional information: again i'm awakened by the sounds of heavy equipment rolling into this site.  4:50am on a saturday.  yesterday was 4:30am.  this can not be legal.;                                                                                                                                                                                                                                                                                          | Building Inspection Division |
 |  4 | Date last observed: 14-aug-17;    time last observed: 8 am;    floor: n/a;    unit: n/a;    exact location: main bldg;    building type: residence/dwelling   other building; ;    additional information: contractor is occupying street and storing equipment and dumpsters along entire street front of project and no valid street use permit is displayed - only an expired one;                                                                                                                                                                                                                                                      | Building Inspection Division |
+
+View Shape of Dataframe:
+``` python
+df.shape
+```
+*(268628, 2)*
