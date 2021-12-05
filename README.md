@@ -1,6 +1,5 @@
 - [1. Introduction](#1-introduction)
 - [2. Exploratory Analysis and Visualizations](#2-exploratory-analysis-and-visualizations)
-  - [1. Exploration](#1-exploration)
     - [1. Fetch and Load Data](#1-fetch-and-load-data)
     - [2. Explore Data](#2-explore-data)
       - [1. View Head of Data](#1-view-head-of-data)
@@ -11,7 +10,6 @@
       - [6. Select Classes for our Model](#6-select-classes-for-our-model)
       - [7. Dealing with Null Values](#7-dealing-with-null-values)
       - [8. Analyze Complaint Length](#8-analyze-complaint-length)
-  - [2. Visualizations](#2-visualizations)
 # 1. Introduction
 The goal of this project is to build a Natural Language Processing multi-class Classifier using Tensorflow, Keras, Hugging Face,   
 and other libraries that the City of San Francisco could use to classify complaints received by the building department so the   
@@ -39,7 +37,6 @@ We will begin by exploring the dataset we will be working with to get an idea of
 how many null values and duplicates there are, what words are most frequent throughout the dataset and different deaparments,  
 and other information about the corpus, or body of text we will be working with. 
 
-## 1. Exploration
 
 ### 1. Fetch and Load Data
 To begin we fetch our data using the fetch_data module in src, this simply fetches the data from the City of SF's API using our  
@@ -215,4 +212,3 @@ Mean Complaint Length:  150.45421688133797
 Min Complaint Length:  1  
 Max Complaint Length:  1000*   
 
-## 2. Visualizations
