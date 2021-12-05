@@ -10,7 +10,8 @@ I found the dataset on https://datasf.org/ which is a collection of public datas
 The dataset consists of 184,593 different complaints that the Building Department has received and include other information   
 about the complaint, including the division it was assigned to which will be the target for our model.
 
-The dataset is continously updated as the department receives more complaints and can easily be downloaded using the city's Socrata API.   
+The dataset is continously updated as the department receives more complaints and can easily be downloaded using the city's Socrata  
+open Data API, or SODA.  
 
 Currently the project is utilizing following libraries:  
 <ul>
@@ -31,13 +32,13 @@ and other information about the corpus, or body of text we will be working with.
 To begin we fetch our data using the fetch_data module in src, this simply fetches the data from the City of SF's API using our  
 API key and stores it in a Pandas dataframe. You must sign up for a key before you can fetch information from the API.
 
-fetch_data definition:
+Defining fetch_data function:
 ``` python 
 def fetch_data(app_key):
-    client = Socrata("data.sfgov.org", app_key)
-    results = client.get("gm2e-bten", limit = 300000)
-    results_df = pd.DataFrame.from_records(results, index ='complaint_number')
-    results_df.to_csv(data_path + 'raw_data.csv')
+    client = Socrata("data.sfgov.org", app_key)                                 #define Socrata client 
+    results = client.get("gm2e-bten", limit = 300000)                           #fetch our dataset from the SODA API
+    results_df = pd.DataFrame.from_records(results, index ='complaint_number')  #store results in Pandas dataframe
+    results_df.to_csv(data_path + 'raw_data.csv')                               #save results to /data/ subdirectory
 ```
 Fetching Data:
 ``` python
