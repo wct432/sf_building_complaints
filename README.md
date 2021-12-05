@@ -2,9 +2,11 @@
 - [2. Exploration and Visualizations](#2-exploration-and-visualizations)
     - [1. Fetch and Load Data](#1-fetch-and-load-data)
     - [2. Explore Data](#2-explore-data)
-        - [1. View Head of Data](#1-view-head-of-data)
-        - [2. View Shape of Data](#2-view-shape-of-data)
-        - [3. Find and Drop Duplicates](#3-find-and-drop-duplicates)
+      - [1. View Head of Data](#1-view-head-of-data)
+      - [2. View Shape of Data](#2-view-shape-of-data)
+      - [3. Find and Drop Duplicates](#3-find-and-drop-duplicates)
+      - [4. Check Data Types](#4-check-data-types)
+      - [5. Check Class Imbalance](#5-check-class-imbalance)
 # 1. Introduction
 The goal of this project is to build a Natural Language Processing multi-class Classifier using Tensorflow, Keras, Hugging Face,   
 and other libraries that the City of San Francisco could use to classify complaints received by the building department so the   
@@ -104,3 +106,40 @@ Drop Duplicates:
 #drop duplicates
 df.drop_duplicates(inplace = True)
 ```
+
+View Shape After Removing Duplicates:
+``` python
+print("Shape: ", df.shape)
+```
+*Shape:  (184593, 2)*
+
+#### 4. Check Data Types
+Now we will quickly check the datatypes , both columns should be objects.
+``` python
+#ensure datatypes are correct
+df.dtypes
+```
+*complaint_description    object  
+assigned_division        object  
+dtype: object*
+
+#### 5. Check Class Imbalance
+``` python
+#determine how many complaints there are for each category
+df.assigned_division.value_counts()
+```
+*Housing Inspection Services       87118  
+Building Inspection Division      63685  
+Plumbing Inspection Division      16297  
+Code Enforcement Section          10766  
+Electrical Inspection Division     5544  
+Disabled Access Division           1114  
+Help Desk / Technical Services       33  
+Department of Bldg Inspection        11  
+Other/Outside Agency                  9  
+Department of City Planning           4  
+Seismic Safety Section                1  
+Central Permit Bureau                 1  
+Major Plan Check Division             1  
+Department of Public Health           1  
+Name: assigned_division, dtype: int64*
