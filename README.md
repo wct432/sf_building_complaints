@@ -7,7 +7,7 @@
       - [3. Find and Drop Duplicates](#3-find-and-drop-duplicates)
       - [4. Check Data Types](#4-check-data-types)
       - [5. Check Class Imbalance](#5-check-class-imbalance)
-      - [6. Selection Classes for our Model](#6-selection-classes-for-our-model)
+      - [6. Select Classes for our Model](#6-select-classes-for-our-model)
 # 1. Introduction
 The goal of this project is to build a Natural Language Processing multi-class Classifier using Tensorflow, Keras, Hugging Face,   
 and other libraries that the City of San Francisco could use to classify complaints received by the building department so the   
@@ -152,9 +152,9 @@ class weights in Tensorflow and utilizing transfer learning by using a BERT enco
 This gave the model a much deeper understanding of the text, which was especially helpful for classes with less data,   
 like the Disabled Access Division.
 
-#### 6. Selection Classes for our Model
-The Code Enforcment Division doesn't contain complaints the city received, it is  a log of inspections and infractions so we will drop it from  
-the database. We are also going to remove any categories that don't have at least 1,000 complaints, as there are many categories with virtually  
+#### 6. Select Classes for our Model
+The Code Enforcment Division doesn't contain complaints the city received, it is  a log of inspections and infractions so we will drop it from    
+the database. We are also going to remove any categories that don't have at least 1,000 complaints, as there are many categories with virtually    
 no data. 
 
 Removing Classes from Dataframe:
