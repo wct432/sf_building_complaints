@@ -1,5 +1,5 @@
 - [1. Introduction](#1-introduction)
-- [2. Exploratory Analysis and Visualizations](#2-exploratory-analysis-and-visualizations)
+- [2. Exploratory Analysis, Pre-Processing, and Visualizations](#2-exploratory-analysis-pre-processing-and-visualizations)
     - [1. Fetch and Load Data](#1-fetch-and-load-data)
     - [2. Explore Data](#2-explore-data)
       - [1. View Head of Data](#1-view-head-of-data)
@@ -10,6 +10,10 @@
       - [6. Select Classes for our Model](#6-select-classes-for-our-model)
       - [7. Dealing with Null Values](#7-dealing-with-null-values)
       - [8. Analyze Complaint Length](#8-analyze-complaint-length)
+      - [9. Complaint Length Histogram](#9-complaint-length-histogram)
+      - [10. Complaints Wordcloud](#10-complaints-wordcloud)
+      - [11. Most Common Collocations](#11-most-common-collocations)
+      - [12. Wordcloud for Each Class](#12-wordcloud-for-each-class)
 # 1. Introduction
 The goal of this project is to build a Natural Language Processing multi-class Classifier using Tensorflow, Keras, Hugging Face,   
 and other libraries that the City of San Francisco could use to classify complaints received by the building department so the   
@@ -32,7 +36,7 @@ Currently the project is utilizing following libraries:
     <li>Scikit-Learn</li>
 <ul>
 
-# 2. Exploratory Analysis and Visualizations
+# 2. Exploratory Analysis, Pre-Processing, and Visualizations
 We will begin by exploring the dataset we will be working with to get an idea of the number of complaints for each department,  
 how many null values and duplicates there are, what words are most frequent throughout the dataset and different deaparments,  
 and other information about the corpus, or body of text we will be working with. 
@@ -212,3 +216,107 @@ Mean Complaint Length:  150.45421688133797
 Min Complaint Length:  1  
 Max Complaint Length:  1000*   
 
+#### 9. Complaint Length Histogram
+Now we will visualize the distribution of the length of our complaints using a histogram. 
+<details>
+<summary> Click to display code! </summary>
+
+<p>
+
+``` python
+#create histogram showing distribution of complaint length
+fig, ax = plt.subplots(figsize=(18,8))
+ax = sns.histplot(data = sample, x='complaint_length', bins = 100, color = "blue")
+xticks = plt.xticks(np.arange(0, 1001, 50.0))
+ax.tick_params(axis='x', labelsize=20)
+ax.set_xlabel('Complaint Length', fontsize = 30)
+ax.set_ylabel('Count', fontsize = 30)
+```
+
+</p>
+</details>
+
+![Complaint Length Histogram](/../images/images/complaint_length_histogram.png?raw=true)
+
+#### 10. Complaints Wordcloud
+Now we will generate a wordcloud to display the most common words in the corpus. 
+
+<details>
+<summary> Click to display code! </summary>
+
+<p>
+
+``` python
+text = " ".join(complaint for complaint in df.complaint_description)                #join complaints together
+wordcloud = WordCloud(stopwords=stop_words, background_color="whitesmoke",          #create wordcloud
+                     collocations = False, width=2400, height=1000).generate(text)
+
+fig, ax = plt.subplots(figsize=(24,10))                                             #set figsize
+ax = plt.imshow(wordcloud, interpolation='bilinear')                                #dispaly wordcloud
+plt.axis("off")                                                                     #remove axis
+```
+
+</p>
+</details>
+
+![Complaints Wordcloud](/../images/images/complaints_wordcloud.png?raw=true)
+
+
+#### 11. Most Common Collocations
+Now we will display the most common collocations, or pairs of words, found in our corpus. Collocations are powerful   
+as they can help us to see patterns throughout the corpus and the pairs can generate more meaning and context than  
+a single word alone. 
+
+<details>
+<summary> Click to display code! </summary>
+
+<p>
+
+``` python
+text = " ".join(complaint for complaint in df.complaint_description)                #join complaints together 
+wordcloud = WordCloud(stopwords=stop_words, background_color="aliceblue",           #create collocation wordcloud (pairs of words)
+                     colormap = "tab10", width=2400, height=1000).generate(text)
+
+fig, ax = plt.subplots(figsize=(24,10))                                             #set figure size
+ax = plt.imshow(wordcloud, interpolation='bilinear')                                #display wordcloud
+plt.axis("off")                                                                     #remove axis                                                                #remove axis
+```
+
+</p>
+</details>
+
+![Complaints Wordcloud Collocations](/../images/images/complaint_collocations_wordcloud.png?raw=true)
+
+#### 12. Wordcloud for Each Class
+Now we will create a wordcloud for each class.
+
+<details>
+<summary> Click to display code! </summary>
+
+<p>
+
+``` python
+complaint_classes = np.unique(df['assigned_division'].values)                       #create list of class names
+
+fig, axes = plt.subplots(3,2, figsize=(80, 40))                                     #prepare figure with subplots
+axes = axes.flatten()                                                               #flatten axes
+axes[5].remove()                                                                    #remove 6th element from axes as we only have 5 classes
+
+for i, complaint_class in enumerate(complaint_classes):                             #loop through each class with its index
+
+    text = " ".join(complaint for complaint in df.loc[df['assigned_division'] \
+                    == complaint_class].complaint_description)                      #for each class join the complaints together into one text for that class
+
+    wordcloud = WordCloud(stopwords=stop_words,background_color="aliceblue",        #create a wordcloud for the class
+                          collocations = False,colormap = "tab10").generate(text)
+    
+    axes[i].imshow(wordcloud,interpolation='none')                                  #display the class on axes using its index to determine position in subplot
+    axes[i].set_title(complaint_class, size = 60)                                   #set title of the wordcloud to the class name
+```
+
+</p>
+
+</details>
+</summary>
+
+![Wordcloud of Complaints by Division](/../images/images/wordcloud_by_division.png?raw=true)
