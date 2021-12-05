@@ -1,7 +1,10 @@
 - [1. Introduction](#1-introduction)
 - [2. Exploration and Visualizations](#2-exploration-and-visualizations)
     - [1. Fetch and Load Data](#1-fetch-and-load-data)
-    - [2. Explore Data Demographics](#2-explore-data-demographics)
+    - [2. Explore Data](#2-explore-data)
+        - [1. View Head of Data](#1-view-head-of-data)
+        - [2. View Shape of Data](#2-view-shape-of-data)
+        - [3. Find and Drop Duplicates](#3-find-and-drop-duplicates)
 # 1. Introduction
 The goal of this project is to build a Natural Language Processing multi-class Classifier using Tensorflow, Keras, Hugging Face,   
 and other libraries that the City of San Francisco could use to classify complaints received by the building department so the   
@@ -58,11 +61,11 @@ data_path = os.path.dirname(working_dir) + '/data/'
 df = pd.read_csv(data_path + 'raw_data.csv', usecols=['complaint_description', 'assigned_division'])
 ```
 
-### 2. Explore Data Demographics
+### 2. Explore Data 
 Now we are ready to explore our data, we want to get a feel for the dataframe and for the distribution of our data amongst the  
 different classes.  
 
-View Head of Data:
+##### 1. View Head of Data
 ``` python
 df.head()
 ```
@@ -82,9 +85,22 @@ df.head()
 </p>
 </details>
 
-
-View Shape of Dataframe:
+##### 2. View Shape of Data
 ``` python
 df.shape
 ```
 *(268628, 2)*
+
+##### 3. Find and Drop Duplicates
+View Number of Duplicates:
+``` python
+#determine how many duplicate entries there are
+df.duplicated().sum()
+```
+*84035*
+
+Drop Duplicates:
+``` python
+#drop duplicates
+df.drop_duplicates(inplace = True)
+```
