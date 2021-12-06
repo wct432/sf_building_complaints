@@ -949,4 +949,6 @@ Recall is True Positive / True Positive + False Negative and instead answers the
 
 F1 Score is the Harmonic Mean of Precision and Recall, and provides a balanced metric that shows how your model does with each metric taken into account.  
 
+The macro-avg computes the metric independently for each class and then averages them, treating all classes equally, whereas a micro-average aggregates the contributions of all classes in order to compute the average metric.  
+
 From these results we can conclude that the model excels at predicting the Building Inspection Division, the Housing Inspection Division, and  The Plumbing Inspection Division, it also performs fairly well on the Electrical Inspection Division, which is the second smallest class. On the Disabled Access Division the model still has some room for improvement, with an F1-Score of 0.60 and a Precision of 0.63 an recall of 0.58. I am going to explore feature augmentation steps like translating the corpus to another language and back to English to generate more data for the imbalanced classes next. 
