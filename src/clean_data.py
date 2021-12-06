@@ -17,7 +17,7 @@ stemmer = PorterStemmer()
 
 
 
-def normalize_text(text, exclude_nums=True, lemmatize = False):
+def normalize_text(text, lemmatize = False):
     """
     Normalize the text by first converting to lowercase, removing punctuation and/or numbers,
     converting words to tokens, removing stopwords, then finally return the stemmed
@@ -34,7 +34,7 @@ def normalize_text(text, exclude_nums=True, lemmatize = False):
     #lowercase text
     text = lowercase(text)
 
-    #remove punctuation and remove numbers by default
+    #remove punctuation and remove numbers 
     text_cleaned = remove_non_letters(text)
 
     #remove stop words
@@ -46,11 +46,7 @@ def normalize_text(text, exclude_nums=True, lemmatize = False):
     else:
         stemmed_words = stem_words(tokens)
 
-    # print("text_cleaned :", text_cleaned)
-    # print("\n")
-    # print("Tokens without stopwords :", tokens)
-    # print("\n")
-
+    #return lemmatized or stemmed text
     return lemmatized_words if lemmatize else stemmed_words
 
 
